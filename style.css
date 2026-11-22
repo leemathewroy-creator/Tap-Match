@@ -81,6 +81,23 @@ body {
 }
 
 /* =====================================
+   GAME CONTENT
+===================================== */
+
+#gameContent {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    overflow: hidden;
+}
+
+/* =====================================
    GAME TITLE
 ===================================== */
 
@@ -176,7 +193,6 @@ body {
 
 /* =====================================
    GAME BOARD
-   FIXED SPACE - FRUITS SCROLL INSIDE
 ===================================== */
 
 .game-board {
@@ -185,28 +201,24 @@ body {
     display: grid;
 
     grid-template-columns: repeat(6, minmax(0, 1fr));
-
-    /* Automatically creates rows for extra fruits */
     grid-template-rows: none;
     grid-auto-rows: 38px;
 
     gap: 5px;
     padding: 4px;
 
-    /* Board uses remaining available space */
     flex: 1 1 0;
     min-height: 100px;
 
-    /* Extra fruits stay inside this area */
     overflow-y: auto;
     overflow-x: hidden;
 
     align-content: start;
+
     scrollbar-width: thin;
     scrollbar-color: #ff32dc #10034b;
 }
 
-/* Board scrollbar for Chrome and Edge */
 .game-board::-webkit-scrollbar {
     width: 5px;
 }
@@ -268,7 +280,6 @@ body {
 
 /* =====================================
    COLLECTION AREA
-   ALWAYS STAYS BELOW THE BOARD
 ===================================== */
 
 .collection-container {
@@ -313,7 +324,6 @@ body {
 
 /* =====================================
    GAME CONTROL BUTTONS
-   FIXED POSITION
 ===================================== */
 
 .game-controls {
@@ -475,71 +485,13 @@ body {
 }
 
 /* =====================================
-   MOBILE RESPONSIVE DESIGN
-===================================== */
-
-@media (max-width: 450px) {
-
-    body {
-        padding: 5px;
-    }
-
-    .game-screen {
-        padding: 5px;
-        gap: 5px;
-    }
-
-    .game-board {
-        grid-auto-rows: 32px;
-        gap: 4px;
-        padding: 3px;
-    }
-
-    .tile {
-        height: 32px;
-        font-size: 22px;
-        border-width: 2px;
-        border-radius: 7px;
-    }
-
-    .collection-bar {
-        gap: 2px;
-    }
-
-    .extra-box {
-        padding: 4px 2px;
-    }
-
-    .extra-box span {
-        font-size: 7px;
-    }
-
-    .extra-box h2 {
-        font-size: 12px;
-    }
-
-    .game-controls {
-        gap: 4px;
-    }
-
-    .game-controls button {
-        padding: 7px 9px;
-        font-size: 9px;
-    }
-}
-
-
-/* =====================================
    START GAME SCREEN
 ===================================== */
-
-.game-screen {
-    position: relative;
-}
 
 .start-screen {
     position: absolute;
     inset: 0;
+
     z-index: 50;
 
     display: flex;
@@ -550,7 +502,6 @@ body {
     height: 100%;
 
     padding: 20px;
-    box-sizing: border-box;
 
     background: linear-gradient(
         145deg,
@@ -651,12 +602,74 @@ body {
     margin-top: 22px;
 }
 
-/* MOBILE RESPONSIVENESS */
+/* =====================================
+   MOBILE RESPONSIVE DESIGN
+===================================== */
 
 @media (max-width: 450px) {
 
+    body {
+        padding: 5px;
+    }
+
+    .game-screen {
+        padding: 5px;
+        gap: 5px;
+    }
+
+    #gameContent {
+        gap: 5px;
+    }
+
+    .game-board {
+        grid-auto-rows: 32px;
+        gap: 4px;
+        padding: 3px;
+    }
+
+    .tile {
+        height: 32px;
+        font-size: 22px;
+        border-width: 2px;
+        border-radius: 7px;
+    }
+
+    .collection-bar {
+        gap: 2px;
+    }
+
+    .extra-box {
+        padding: 4px 2px;
+    }
+
+    .extra-box span {
+        font-size: 7px;
+    }
+
+    .extra-box h2 {
+        font-size: 12px;
+    }
+
+    .game-controls {
+        gap: 4px;
+    }
+
+    .game-controls button {
+        padding: 7px 9px;
+        font-size: 9px;
+    }
+
     .start-screen {
         padding: 12px;
+        overflow-y: auto;
+    }
+
+    .start-content h1 {
+        font-size: 30px;
+    }
+
+    .start-content h2 {
+        font-size: 25px;
     }
 
     .start-instructions {
@@ -678,4 +691,8 @@ body {
         padding: 13px;
     }
 
+    .start-footer {
+        font-size: 9px;
+        margin-top: 15px;
+    }
 }

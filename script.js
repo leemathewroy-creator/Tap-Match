@@ -60,8 +60,11 @@ const hintBtn = document.getElementById("hintBtn");
 const soundBtn = document.getElementById("soundBtn");
 const restartBtn = document.getElementById("restartBtn");
 
-const backgroundMusic =
-    document.getElementById("backgroundMusic");
+const backgroundMusic = document.getElementById("backgroundMusic");
+
+const startScreen = document.getElementById("startScreen");
+const startBtn = document.getElementById("startBtn");
+const gameContent = document.getElementById("gameContent");
 
 
 // ==========================================
@@ -156,9 +159,7 @@ function startBackgroundMusic() {
 function stopBackgroundMusic() {
 
     if (backgroundMusic) {
-
         backgroundMusic.pause();
-
     }
 
 }
@@ -178,15 +179,11 @@ function initializeAudio() {
     if (!AudioContextClass) return;
 
     if (!audioContext) {
-
         audioContext = new AudioContextClass();
-
     }
 
     if (audioContext.state === "suspended") {
-
         audioContext.resume();
-
     }
 
 }
@@ -347,12 +344,8 @@ function startLevel() {
 
     collection = [];
 
-    // Reset timer to 5 minutes on every level.
-
     timeLeft = getLevelTime();
     hintsLeft = getLevelHints();
-
-    // Generate the fruit tiles.
 
     const activeIcons = getActiveIcons();
     const copies = getCopiesPerIcon();
@@ -375,8 +368,6 @@ function startLevel() {
     });
 
     shuffle(board);
-
-    // Update displays.
 
     levelDisplay.textContent = level;
     movesDisplay.textContent = "0";
@@ -438,16 +429,12 @@ function startTimer() {
 
         timerDisplay.textContent = formatTime(timeLeft);
 
-        // Warning when only 30 seconds remain.
-
         if (timeLeft === 30) {
 
             statusMessage.textContent =
                 "⚠️ Hurry up! Only 30 seconds left!";
 
         }
-
-        // Time runs out.
 
         if (timeLeft <= 0) {
 
@@ -511,7 +498,7 @@ function selectTile(id) {
 
     if (!selectedTile) return;
 
-    // Start timer and music on first move.
+    // Start timer on the first fruit tap.
 
     if (!gameStarted) {
 
@@ -530,13 +517,9 @@ function selectTile(id) {
 
     movesDisplay.textContent = moves;
 
-    // Remove tile from board.
-
     board = board.filter(
         tile => tile.id !== id
     );
-
-    // Add fruit to collection.
 
     collection.push(selectedTile.symbol);
 
@@ -608,7 +591,6 @@ function checkTripleMatch() {
             });
 
             score += 100;
-
             combo++;
 
             matched = true;
@@ -635,8 +617,6 @@ function checkTripleMatch() {
 
     }
 
-    // Check if the current level is completed.
-
     if (board.length === 0 && collection.length === 0) {
 
         nextLevel();
@@ -644,8 +624,6 @@ function checkTripleMatch() {
         return;
 
     }
-
-    // Check if collection is full.
 
     if (collection.length >= MAX_SLOTS) {
 
@@ -688,8 +666,6 @@ function nextLevel() {
     statusMessage.textContent =
         "🎉 LEVEL COMPLETED! GET READY FOR LEVEL " + level + "!";
 
-    // Short delay before the next level.
-
     levelTimeout = setTimeout(() => {
 
         startLevel();
@@ -716,8 +692,6 @@ function showHint() {
 
     }
 
-    // Find a fruit that can complete a triple.
-
     const hintIcon = getActiveIcons().find(icon => {
 
         const inCollection = collection.filter(
@@ -741,8 +715,6 @@ function showHint() {
 
     }
 
-    // Deduct one hint only when a valid hint is found.
-
     hintsLeft--;
 
     hintsDisplay.textContent = hintsLeft;
@@ -750,16 +722,12 @@ function showHint() {
     hintBtn.textContent =
         "💡 HINT (" + hintsLeft + ")";
 
-    // Remove previous highlights.
-
     clearTimeout(hintTimeout);
 
     document.querySelectorAll(".hint-highlight")
         .forEach(tile => {
             tile.classList.remove("hint-highlight");
         });
-
-    // Highlight matching tiles.
 
     const matchingTiles = board.filter(
         tile => tile.symbol === hintIcon
@@ -783,8 +751,6 @@ function showHint() {
 
     statusMessage.textContent =
         "Find " + hintIcon + " to complete your match!";
-
-    // Remove highlights after three seconds.
 
     hintTimeout = setTimeout(() => {
 
@@ -866,24 +832,24 @@ function restartGame() {
 
 restartBtn.addEventListener("click", restartGame);
 
-// ==========================================
-// 21. START SCREEN
-// ==========================================
 
-const startScreen = document.getElementById("startScreen");
-const startBtn = document.getElementById("startBtn");
+// ==========================================
+// 21. START SCREEN BUTTON
+// ==========================================
 
 startBtn.addEventListener("click", function() {
 
     // Hide the welcome screen.
     startScreen.style.display = "none";
 
-    // Start background music after player interaction.
+    // Show the actual game.
+    gameContent.style.display = "flex";
+
+    // Start music after player interaction.
     initializeAudio();
     startBackgroundMusic();
 
-    // Start a fresh game.
+    // Initialize a fresh game.
     startGame();
 
-}
-);
+});
