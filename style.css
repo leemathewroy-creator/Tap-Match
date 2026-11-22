@@ -527,3 +527,155 @@ body {
         font-size: 9px;
     }
 }
+
+
+/* =====================================
+   START GAME SCREEN
+===================================== */
+
+.game-screen {
+    position: relative;
+}
+
+.start-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        145deg,
+        rgba(20, 8, 45, 0.98),
+        rgba(55, 15, 90, 0.98),
+        rgba(15, 10, 40, 0.98)
+    );
+
+    border-radius: inherit;
+    text-align: center;
+}
+
+.start-content {
+    width: 100%;
+    max-width: 420px;
+}
+
+.start-content h1 {
+    color: #ffffff;
+    font-size: clamp(30px, 7vw, 52px);
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-shadow: 0 0 15px #bd55ff;
+    margin-bottom: 0;
+}
+
+.start-content h2 {
+    color: #ffd84d;
+    font-size: clamp(25px, 6vw, 38px);
+    letter-spacing: 8px;
+    margin-top: 0;
+    text-shadow: 0 0 12px #ffb700;
+}
+
+.start-subtitle {
+    color: #ffffff;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.start-instructions {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 12px;
+    margin-bottom: 25px;
+}
+
+.start-instructions h3 {
+    color: #ffd84d;
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+
+.start-instructions p {
+    color: white;
+    font-size: 13px;
+    margin: 9px 0;
+}
+
+.start-btn {
+    width: 85%;
+    padding: 16px;
+    border: none;
+    border-radius: 30px;
+
+    background: linear-gradient(
+        90deg,
+        #ffb52e,
+        #ffdf57
+    );
+
+    color: #301044;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 18px rgba(255, 190, 40, 0.6);
+    transition: 0.2s;
+}
+
+.start-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 210, 60, 0.9);
+}
+
+.start-btn:active {
+    transform: scale(0.96);
+}
+
+.start-footer {
+    color: #d8b7ff;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-top: 22px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 450px) {
+
+    .start-screen {
+        padding: 12px;
+    }
+
+    .start-instructions {
+        padding: 8px;
+        margin-bottom: 16px;
+    }
+
+    .start-instructions p {
+        font-size: 11px;
+    }
+
+    .start-subtitle {
+        font-size: 10px;
+        margin-bottom: 15px;
+    }
+
+    .start-btn {
+        font-size: 15px;
+        padding: 13px;
+    }
+
+}

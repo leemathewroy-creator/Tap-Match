@@ -866,9 +866,24 @@ function restartGame() {
 
 restartBtn.addEventListener("click", restartGame);
 
-
 // ==========================================
-// 21. INITIALIZE GAME
+// 21. START SCREEN
 // ==========================================
 
-startGame();
+const startScreen = document.getElementById("startScreen");
+const startBtn = document.getElementById("startBtn");
+
+startBtn.addEventListener("click", function() {
+
+    // Hide the welcome screen.
+    startScreen.style.display = "none";
+
+    // Start background music after player interaction.
+    initializeAudio();
+    startBackgroundMusic();
+
+    // Start a fresh game.
+    startGame();
+
+}
+);
