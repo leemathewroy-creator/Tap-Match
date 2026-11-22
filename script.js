@@ -68,21 +68,16 @@ const backgroundMusic =
 // 3. LEVEL SETTINGS
 // ==========================================
 
-// Each level has a different time limit.
-// Time decreases as the player progresses.
+// Every level has the same 5-minute time limit.
 
 function getLevelTime() {
-
-    return Math.max(300 - ((level - 1) * 60), 30);
-
+    return 300;
 }
 
 // Number of hints available per level.
 
 function getLevelHints() {
-
     return Math.max(4 - level, 0);
-
 }
 
 // Number of different fruits increases per level.
@@ -352,7 +347,7 @@ function startLevel() {
 
     collection = [];
 
-    // Set time and hints for the current level.
+    // Reset timer to 5 minutes on every level.
 
     timeLeft = getLevelTime();
     hintsLeft = getLevelHints();
@@ -594,9 +589,6 @@ function checkTripleMatch() {
             item => item === icon
         ).length;
 
-        // Allow multiple matches if three or more
-        // identical icons are in the collection.
-
         while (count >= 3) {
 
             let removed = 0;
@@ -714,8 +706,6 @@ function nextLevel() {
 function showHint() {
 
     if (gameOver || changingLevel) return;
-
-    // Check remaining hints.
 
     if (hintsLeft <= 0) {
 
