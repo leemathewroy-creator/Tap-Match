@@ -2,40 +2,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Ginagamit ito para maayos na ma-display ang text, numbers, and symbols sa game. -->
     <meta charset="UTF-8">
 
-    <!-- Responsive design -->
+    <!-- Para mag-adjust ang size ng game depende kung cellphone, tablet, or computer ang gamit. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Ito ang title ng game na makikita sa browser tab. -->
     <title>Tap Match Arcade</title>
 
+    <!-- Kinokonekta nito ang HTML sa CSS file para sa design and appearance ng game. -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- BACKGROUND MUSIC -->
+    <!-- BACKGROUND MUSIC: Dito nilalagay ang background music na tutugtog habang naglalaro. -->
     <audio id="backgroundMusic" loop preload="auto">
         <source src="background-music.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- ARCADE MACHINE -->
+    <!-- ARCADE MACHINE: Ito ang main container na naglalaman ng buong game. -->
     <main class="arcade-machine">
 
+        <!-- GAME SCREEN: Dito nakalagay ang start screen at actual game interface. -->
         <section class="game-screen">
 
-            <!-- START SCREEN -->
+            <!-- START SCREEN: Ito ang unang screen na makikita ng player kapag binuksan ang game. -->
             <div id="startScreen" class="start-screen">
 
                 <div class="start-content">
 
+                    <!-- Ito ang title at name ng game. -->
                     <h1>TAP MATCH</h1>
                     <h2>ARCADE</h2>
 
+                    <!-- Maikling description tungkol sa main objective ng game. -->
                     <p class="start-subtitle">
                         MATCH THREE IDENTICAL ICONS!
                     </p>
 
+                    <!-- HOW TO PLAY: Dito makikita ang instructions kung paano laruin ang game. -->
                     <div class="start-instructions">
 
                         <h3>HOW TO PLAY</h3>
@@ -47,10 +54,12 @@
 
                     </div>
 
+                    <!-- START BUTTON: Ito ang pipindutin ng player para simulan ang game. -->
                     <button id="startBtn" class="start-btn">
                         ▶ START GAME
                     </button>
 
+                    <!-- Short slogan na makikita sa bottom part ng start screen. -->
                     <p class="start-footer">
                         MATCH • SCORE • LEVEL UP!
                     </p>
@@ -60,34 +69,39 @@
             </div>
 
 
-            <!-- GAME CONTENT -->
+            <!-- GAME CONTENT: Dito nakalagay ang lahat ng main parts ng game.
+                 Nakatago muna ito hanggang pindutin ng player ang Start Game button. -->
             <div id="gameContent" style="display: none;">
 
-                <!-- GAME TITLE -->
+                <!-- GAME TITLE: Ipinapakita ang name ng game habang naglalaro. -->
                 <header class="game-header">
                     <h1>TAP MATCH</h1>
                     <p>MATCH THREE IDENTICAL ICONS!</p>
                 </header>
 
 
-                <!-- MAIN SCOREBOARD -->
+                <!-- MAIN SCOREBOARD: Dito makikita ang current level, moves, time, at remaining items. -->
                 <div class="game-info">
 
+                    <!-- Ipinapakita kung anong level na ang player. -->
                     <div class="info-box">
                         <span>LEVEL</span>
                         <h2 id="level">1</h2>
                     </div>
 
+                    <!-- Binibilang kung ilang moves na ang nagawa ng player. -->
                     <div class="info-box">
                         <span>MOVES</span>
                         <h2 id="moves">0</h2>
                     </div>
 
+                    <!-- Ipinapakita kung gaano pa katagal ang remaining time ng player. -->
                     <div class="info-box">
                         <span>TIME</span>
                         <h2 id="timer">05:00</h2>
                     </div>
 
+                    <!-- Ipinapakita kung ilan pang items ang kailangan i-match. -->
                     <div class="info-box">
                         <span>REMAINING</span>
                         <h2 id="remaining">30</h2>
@@ -96,24 +110,28 @@
                 </div>
 
 
-                <!-- EXTRA SCOREBOARD -->
+                <!-- EXTRA SCOREBOARD: Dito makikita ang additional information tungkol sa performance ng player. -->
                 <div class="extra-info">
 
+                    <!-- Ipinapakita ang current points na nakuha ng player. -->
                     <div class="extra-box">
                         <span>SCORE</span>
                         <h2 id="score">0</h2>
                     </div>
 
+                    <!-- Ipinapakita ang highest score na na-record ng player. -->
                     <div class="extra-box">
                         <span>BEST SCORE</span>
                         <h2 id="bestScore">0</h2>
                     </div>
 
+                    <!-- Ipinapakita ang combo o sunod-sunod na matches ng player. -->
                     <div class="extra-box">
                         <span>COMBO</span>
                         <h2 id="combo">x0</h2>
                     </div>
 
+                    <!-- Ipinapakita kung ilang hints pa ang available sa player. -->
                     <div class="extra-box">
                         <span>HINTS LEFT</span>
                         <h2 id="hints">3</h2>
@@ -122,17 +140,19 @@
                 </div>
 
 
-                <!-- GAME BOARD -->
+                <!-- GAME BOARD: Ito ang area kung saan lalabas ang fruit icons.
+                     JavaScript ang nagge-generate ng icons at nagha-handle ng selections ng player. -->
                 <div class="game-board" id="gameBoard">
-                    <!-- Fruit icons generated by JavaScript -->
+                    <!-- Dito ilalagay ng JavaScript ang fruit icons. -->
                 </div>
 
 
-                <!-- COLLECTION BAR -->
+                <!-- COLLECTION BAR: Dito napupunta ang mga fruit na pinili ng player mula sa game board. -->
                 <div class="collection-container">
 
                     <p>YOUR COLLECTION</p>
 
+                    <!-- May seven slots ito kung saan ilalagay ang selected fruit icons. -->
                     <div class="collection-bar" id="collectionBar">
 
                         <div class="slot"></div>
@@ -148,17 +168,20 @@
                 </div>
 
 
-                <!-- GAME CONTROLS -->
+                <!-- GAME CONTROLS: Dito makikita ang buttons na ginagamit para i-control ang game. -->
                 <div class="game-controls">
 
+                    <!-- HINT BUTTON: Nagbibigay ng help sa player kapag nahihirapan siyang maghanap ng match. -->
                     <button id="hintBtn">
                         💡 HINT (3)
                     </button>
 
+                    <!-- RESTART BUTTON: Ginagamit para simulan ulit ang current game. -->
                     <button id="restartBtn">
                         ↻ RESTART
                     </button>
 
+                    <!-- SOUND BUTTON: Ginagamit para i-on or i-off ang background music. -->
                     <button id="soundBtn">
                         🔊 SOUND ON
                     </button>
@@ -166,21 +189,24 @@
                 </div>
 
 
-                <!-- STATUS MESSAGE -->
+                <!-- STATUS MESSAGE: Dito lumalabas ang messages, instructions, at updates habang naglalaro. -->
                 <p id="statusMessage" class="status-message">
                     Find three matching icons!
                 </p>
 
 
-                <!-- END GAME SCREEN -->
+                <!-- END GAME SCREEN: Ito ang screen na lalabas kapag natapos na ang game. -->
                 <div id="endScreen" class="end-screen">
 
+                    <!-- Ipinapakita kung ano ang result ng game, tulad ng Game Over. -->
                     <h2 id="endTitle">
                         GAME OVER!
                     </h2>
 
+                    <!-- Dito ipapakita ang additional details tungkol sa result ng player. -->
                     <p id="endDescription"></p>
 
+                    <!-- PLAY AGAIN BUTTON: Kapag pinindot, tatawagin nito ang restartGame() function sa JavaScript para makapaglaro ulit. -->
                     <button onclick="restartGame()">
                         PLAY AGAIN
                     </button>
@@ -194,7 +220,9 @@
     </main>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT: Kinokonekta nito ang HTML sa JavaScript file.
+         JavaScript ang bahala sa game functions tulad ng pag-generate ng fruits,
+         pag-check ng matches, pag-update ng score, timer, hints, at levels. -->
     <script src="script.js"></script>
 
 </body>

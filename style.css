@@ -1,6 +1,8 @@
 
 /* =====================================
    RESET ALL DEFAULT SPACING
+   Tinatanggal nito ang default margin at padding ng elements.
+   Ginagawang mas madaling i-control ang size ng bawat element.
 ===================================== */
 
 * {
@@ -11,17 +13,28 @@
 
 /* =====================================
    PAGE BACKGROUND
+   Ito ang background ng buong webpage.
 ===================================== */
 
 body {
     min-height: 100vh;
 
+    /* Ina-add ang background image ng webpage */
     background-image: url("arcade-background.png");
+
+    /* Pinapalaki ang image para mapuno ang screen */
     background-size: cover;
+
+    /* Nilalagay ang image sa center */
     background-position: center;
+
+    /* Hindi inuulit ang background image */
     background-repeat: no-repeat;
+
+    /* Nananatili ang background kahit mag-scroll */
     background-attachment: fixed;
 
+    /* Ginagamit para ma-center ang arcade machine */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,59 +42,75 @@ body {
 
 /* =====================================
    ARCADE MACHINE
+   Ito ang main container na may arcade machine background.
 ===================================== */
 
 .arcade-machine {
+    /* Background image ng mismong arcade machine */
     background-image: url("arcade-bg.png");
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
 
+    /* Ina-adjust ang width at height ng arcade machine */
     width: min(100%, 716px);
     aspect-ratio: 716 / 850;
 
+    /* Ginagamit para ma-position ang game screen sa loob nito */
     position: relative;
 }
 
 /* =====================================
    GAME SCREEN
+   Ito ang area kung saan makikita ang buong game.
 ===================================== */
 
 .game-screen {
+    /* Nilalagay ang game screen sa tamang position */
     position: absolute;
 
+    /* Ina-adjust ang location at size ng game screen */
     top: 8%;
     left: 5%;
     width: 90%;
     height: 78%;
 
+    /* Space sa loob ng game screen */
     padding: 18px;
 
+    /* Semi-transparent na purple background */
     background: rgba(40, 0, 100, 0.45);
 
+    /* Pink border at rounded corners */
     border: 7px solid #ff32dc;
     border-radius: 20px;
 
+    /* Nagbibigay ng neon glow effect */
     box-shadow:
         0 0 12px #ff00dd,
         0 0 25px #ff00dd,
         0 0 40px #7600ff,
         inset 0 0 20px #6c00ff;
 
+    /* Inaayos ang layout ng contents vertically */
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    /* Space sa pagitan ng mga elements */
     gap: 10px;
 
+    /* Default text color at alignment */
     color: white;
     text-align: center;
 
+    /* Hindi pinapakita ang content na lumalabas sa screen */
     overflow: hidden;
 }
 
 /* =====================================
    GAME CONTENT
+   Ito ang container ng main game elements.
 ===================================== */
 
 #gameContent {
@@ -89,16 +118,19 @@ body {
     height: 100%;
     min-height: 0;
 
+    /* Inaayos ang position ng game elements */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 
+    /* Pinipigilan ang content na lumabas sa container */
     overflow: hidden;
 }
 
 /* =====================================
    GAME TITLE
+   Styling para sa title at subtitle ng game.
 ===================================== */
 
 .game-header {
@@ -107,25 +139,30 @@ body {
 }
 
 .game-header h1 {
+    /* Color at size ng main game title */
     color: #ffe600;
     font-size: clamp(13px, 2.8vw, 23px);
 
     font-weight: 900;
     letter-spacing: 2px;
 
+    /* Nagbibigay ng pink shadow sa title */
     text-shadow: 2px 2px #ff00dd;
 }
 
 .game-header p {
+    /* Styling para sa subtitle */
     font-size: clamp(6px, 1.2vw, 9px);
     font-weight: bold;
 }
 
 /* =====================================
    MAIN SCOREBOARD
+   Dito makikita ang level, moves, time, at remaining.
 ===================================== */
 
 .game-info {
+    /* Inaayos ang scoreboard boxes nang magkakatabi */
     display: flex;
     width: 100%;
     gap: 5px;
@@ -133,9 +170,11 @@ body {
 }
 
 .info-box {
+    /* Pantay-pantay ang space ng bawat box */
     flex: 1;
     min-width: 0;
 
+    /* Background at border ng scoreboard */
     background: #081baf;
     border: 1px solid #00eaff;
 
@@ -144,22 +183,26 @@ body {
 }
 
 .info-box span {
+    /* Styling para sa labels ng scoreboard */
     font-size: clamp(6px, 1.2vw, 9px);
     color: #ffe600;
     font-weight: bold;
 }
 
 .info-box h2 {
+    /* Size ng numbers sa scoreboard */
     font-size: clamp(9px, 2vw, 15px);
 }
 
 /* =====================================
    EXTRA SCOREBOARD
+   Dito makikita ang score, best score, combo, at hints.
 ===================================== */
 
 .extra-info {
     width: 100%;
 
+    /* Inaayos ang extra scoreboard boxes */
     display: flex;
     justify-content: space-between;
     gap: 7px;
@@ -168,9 +211,11 @@ body {
 }
 
 .extra-box {
+    /* Pantay-pantay ang size ng bawat box */
     flex: 1;
     min-width: 0;
 
+    /* Background at border ng extra scoreboard */
     background: rgba(8, 27, 175, 0.85);
     border: 1px solid #ff32dc;
     border-radius: 7px;
@@ -180,12 +225,14 @@ body {
 }
 
 .extra-box span {
+    /* Styling para sa labels */
     color: #ffe600;
     font-size: 9px;
     font-weight: bold;
 }
 
 .extra-box h2 {
+    /* Styling para sa values ng extra scoreboard */
     color: white;
     font-size: 15px;
     margin-top: 3px;
@@ -193,41 +240,53 @@ body {
 
 /* =====================================
    GAME BOARD
+   Ito ang area kung saan lalabas ang fruit tiles.
 ===================================== */
 
 .game-board {
     width: 100%;
 
+    /* Ginagamit ang grid para maayos ang tiles */
     display: grid;
 
+    /* May 6 columns ang game board */
     grid-template-columns: repeat(6, minmax(0, 1fr));
     grid-template-rows: none;
+
+    /* Height ng bawat row ng tiles */
     grid-auto-rows: 38px;
 
     gap: 5px;
     padding: 4px;
 
+    /* Pinapagamit ang available space sa game board */
     flex: 1 1 0;
     min-height: 100px;
 
+    /* Nagbibigay ng scroll kapag maraming tiles */
     overflow-y: auto;
     overflow-x: hidden;
 
+    /* Nagsisimula ang tiles sa taas */
     align-content: start;
 
+    /* Styling ng scrollbar */
     scrollbar-width: thin;
     scrollbar-color: #ff32dc #10034b;
 }
 
+/* Width ng scrollbar sa game board */
 .game-board::-webkit-scrollbar {
     width: 5px;
 }
 
+/* Background ng scrollbar */
 .game-board::-webkit-scrollbar-track {
     background: #10034b;
     border-radius: 10px;
 }
 
+/* Kulay ng gumagalaw na part ng scrollbar */
 .game-board::-webkit-scrollbar-thumb {
     background: #ff32dc;
     border-radius: 10px;
@@ -235,51 +294,64 @@ body {
 
 /* =====================================
    FRUIT TILES
+   Ito ang design ng bawat fruit na puwedeng i-tap.
 ===================================== */
 
 .tile {
     width: 100%;
     height: 38px;
 
+    /* Pinipigilan ang tile na lumampas sa available space */
     min-width: 0;
     min-height: 0;
 
+    /* Ginagawang center ang fruit icon */
     display: flex;
     justify-content: center;
     align-items: center;
 
+    /* Size at alignment ng fruit icon */
     font-size: 27px;
     line-height: 1;
 
     padding: 0;
     overflow: hidden;
 
+    /* Border at rounded corners ng tile */
     border: 3px solid #ffe600;
     border-radius: 10px;
 
+    /* Pink at purple gradient background */
     background: linear-gradient(
         145deg,
         #ff31d2,
         #7600ff
     );
 
+    /* Shadow sa ilalim ng tile */
     box-shadow: 0 3px 0 #26005c;
 
+    /* Nagiging clickable ang tile */
     cursor: pointer;
+
+    /* Smooth effect kapag nagbabago ang appearance */
     transition: 0.15s;
 }
 
+/* Effect kapag tinapat ang mouse sa tile */
 .tile:hover {
     background: #00aaff;
     transform: scale(1.05);
 }
 
+/* Effect kapag pinindot ang tile */
 .tile:active {
     transform: scale(0.95);
 }
 
 /* =====================================
    COLLECTION AREA
+   Ito ang container ng collection section.
 ===================================== */
 
 .collection-container {
@@ -287,6 +359,7 @@ body {
     flex-shrink: 0;
 }
 
+/* Styling ng text sa collection area */
 .collection-container p {
     font-size: clamp(6px, 1.3vw, 10px);
     color: #ffe600;
@@ -296,9 +369,11 @@ body {
 
 /* =====================================
    COLLECTION SLOTS
+   Dito napupunta ang mga napiling fruit tiles.
 ===================================== */
 
 .collection-bar {
+    /* Gumagawa ng 7 slots na magkakatabi */
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
 
@@ -308,29 +383,38 @@ body {
 
 .slot {
     min-width: 0;
+
+    /* Ginagawang square ang bawat slot */
     aspect-ratio: 1 / 1;
 
+    /* Background ng collection slot */
     background: #10034b;
 
+    /* Dashed border para makita ang bawat slot */
     border: 1px dashed #00eaff;
     border-radius: 5px;
 
+    /* Ginagawang center ang fruit icon sa slot */
     display: flex;
     justify-content: center;
     align-items: center;
 
+    /* Size ng fruit icon sa collection */
     font-size: clamp(10px, 2.5vw, 20px);
 }
 
 /* =====================================
    GAME CONTROL BUTTONS
+   Styling para sa Hint, Restart, at Sound buttons.
 ===================================== */
 
 .game-controls {
+    /* Inaayos ang buttons sa gitna */
     display: flex;
     justify-content: center;
     align-items: center;
 
+    /* Pinapayagan ang buttons na lumipat ng row kapag kulang ang space */
     flex-wrap: wrap;
     gap: 7px;
 
@@ -339,11 +423,13 @@ body {
 }
 
 .game-controls button {
+    /* Size at shape ng buttons */
     padding: 8px 13px;
 
     border: 2px solid #ffe600;
     border-radius: 20px;
 
+    /* Text styling ng buttons */
     color: white;
     font-size: 10px;
     font-weight: bold;
@@ -352,23 +438,28 @@ body {
     transition: 0.2s;
 }
 
+/* Blue gradient background para sa Hint button */
 #hintBtn {
     background: linear-gradient(90deg, #087cff, #00c8ff);
 }
 
+/* Pink gradient background para sa Restart button */
 #restartBtn {
     background: linear-gradient(90deg, #ff0055, #ff00d4);
 }
 
+/* Purple gradient background para sa Sound button */
 #soundBtn {
     background: linear-gradient(90deg, #6c00ff, #a000ff);
 }
 
+/* Effect kapag tinapat ang mouse sa game buttons */
 .game-controls button:hover {
     transform: scale(1.05);
     filter: brightness(1.2);
 }
 
+/* Appearance ng Hint button kapag disabled */
 #hintBtn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -376,6 +467,7 @@ body {
 
 /* =====================================
    STATUS MESSAGE
+   Dito lumalabas ang messages o updates ng game.
 ===================================== */
 
 .status-message {
@@ -388,20 +480,25 @@ body {
     text-align: center;
     flex-shrink: 0;
 
+    /* Smooth transition kapag nagbago ang message style */
     transition: all 0.3s ease;
 }
 
 /* =====================================
    HINT HIGHLIGHT EFFECT
+   Ito ang effect kapag may tile na naka-highlight bilang hint.
 ===================================== */
 
 .tile.hint-highlight {
+    /* Cyan outline para madaling makita ang tile */
     outline: 4px solid #00ffff;
     outline-offset: 2px;
 
+    /* Paulit-ulit na animation ng highlight */
     animation: hintPulse 0.6s infinite alternate;
 }
 
+/* Animation para sa hint highlight */
 @keyframes hintPulse {
     from {
         filter: brightness(1);
@@ -416,18 +513,22 @@ body {
 
 /* =====================================
    TIMER WARNING
+   Styling kapag malapit nang maubos ang time.
 ===================================== */
 
 #timer {
+    /* Normal timer color */
     color: #27ae60;
     transition: color 0.3s ease;
 }
 
+/* Warning style kapag mababa na ang time */
 #timer.warning {
     color: #e74c3c;
     animation: timerPulse 0.7s infinite alternate;
 }
 
+/* Animation para sa timer warning */
 @keyframes timerPulse {
     from {
         opacity: 1;
@@ -440,18 +541,24 @@ body {
 
 /* =====================================
    END GAME SCREEN
+   Ito ang screen na lalabas kapag tapos na ang game.
 ===================================== */
 
 .end-screen {
+    /* Nakatago muna ang end screen */
     display: none;
 
+    /* Pinupuno nito ang buong game screen */
     position: absolute;
     inset: 0;
 
+    /* Nilalagay ito sa ibabaw ng ibang game elements */
     z-index: 10;
 
+    /* Dark purple background */
     background: rgba(15, 0, 65, 0.96);
 
+    /* Inaayos ang content sa gitna */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -460,6 +567,7 @@ body {
     padding: 10px;
 }
 
+/* Styling ng title sa end game screen */
 .end-screen h2 {
     color: #ffe600;
     font-size: clamp(18px, 4vw, 28px);
@@ -467,10 +575,12 @@ body {
     text-shadow: 2px 2px #ff00dd;
 }
 
+/* Styling ng message sa end game screen */
 .end-screen p {
     font-size: clamp(9px, 2vw, 13px);
 }
 
+/* Styling ng button sa end game screen */
 .end-screen button {
     background: #00e676;
     color: black;
@@ -486,14 +596,18 @@ body {
 
 /* =====================================
    START GAME SCREEN
+   Ito ang unang screen na makikita bago simulan ang game.
 ===================================== */
 
 .start-screen {
+    /* Pinupuno nito ang game screen */
     position: absolute;
     inset: 0;
 
+    /* Nilalagay ang start screen sa ibabaw ng ibang elements */
     z-index: 50;
 
+    /* Inaayos ang content sa gitna */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -503,6 +617,7 @@ body {
 
     padding: 20px;
 
+    /* Dark purple gradient background */
     background: linear-gradient(
         145deg,
         rgba(20, 8, 45, 0.98),
@@ -510,15 +625,18 @@ body {
         rgba(15, 10, 40, 0.98)
     );
 
+    /* Sinusunod ang rounded corners ng parent container */
     border-radius: inherit;
     text-align: center;
 }
 
+/* Container ng title, instructions, at start button */
 .start-content {
     width: 100%;
     max-width: 420px;
 }
 
+/* Main title ng start screen */
 .start-content h1 {
     color: #ffffff;
     font-size: clamp(30px, 7vw, 52px);
@@ -528,6 +646,7 @@ body {
     margin-bottom: 0;
 }
 
+/* Second title o subtitle ng start screen */
 .start-content h2 {
     color: #ffd84d;
     font-size: clamp(25px, 6vw, 38px);
@@ -536,6 +655,7 @@ body {
     text-shadow: 0 0 12px #ffb700;
 }
 
+/* Styling ng short description sa start screen */
 .start-subtitle {
     color: #ffffff;
     font-size: 13px;
@@ -543,6 +663,7 @@ body {
     margin-bottom: 25px;
 }
 
+/* Container ng game instructions */
 .start-instructions {
     background: rgba(255, 255, 255, 0.09);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -551,17 +672,24 @@ body {
     margin-bottom: 25px;
 }
 
+/* Title ng instructions */
 .start-instructions h3 {
     color: #ffd84d;
     margin-top: 5px;
     margin-bottom: 12px;
 }
 
+/* Text ng instructions */
 .start-instructions p {
     color: white;
     font-size: 13px;
     margin: 9px 0;
 }
+
+/* =====================================
+   START BUTTON
+   Styling para sa button na mag-start ng game.
+===================================== */
 
 .start-btn {
     width: 85%;
@@ -569,12 +697,14 @@ body {
     border: none;
     border-radius: 30px;
 
+    /* Yellow gradient background */
     background: linear-gradient(
         90deg,
         #ffb52e,
         #ffdf57
     );
 
+    /* Text styling */
     color: #301044;
     font-size: 18px;
     font-weight: 900;
@@ -582,19 +712,23 @@ body {
 
     cursor: pointer;
 
+    /* Glow effect sa button */
     box-shadow: 0 0 18px rgba(255, 190, 40, 0.6);
     transition: 0.2s;
 }
 
+/* Effect kapag tinapat ang mouse sa Start button */
 .start-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 0 25px rgba(255, 210, 60, 0.9);
 }
 
+/* Effect kapag pinindot ang Start button */
 .start-btn:active {
     transform: scale(0.96);
 }
 
+/* Small text sa ilalim ng start screen */
 .start-footer {
     color: #d8b7ff;
     font-size: 11px;
@@ -604,29 +738,36 @@ body {
 
 /* =====================================
    MOBILE RESPONSIVE DESIGN
+   Ina-adjust ang game layout kapag maliit ang screen,
+   tulad ng cellphone.
 ===================================== */
 
 @media (max-width: 450px) {
 
+    /* Small padding sa webpage kapag mobile */
     body {
         padding: 5px;
     }
 
+    /* Binabawasan ang padding at gap ng game screen */
     .game-screen {
         padding: 5px;
         gap: 5px;
     }
 
+    /* Binabawasan ang space ng game content */
     #gameContent {
         gap: 5px;
     }
 
+    /* Ina-adjust ang game board para sa maliit na screen */
     .game-board {
         grid-auto-rows: 32px;
         gap: 4px;
         padding: 3px;
     }
 
+    /* Pinapaliit ang fruit tiles kapag mobile */
     .tile {
         height: 32px;
         font-size: 22px;
@@ -634,63 +775,77 @@ body {
         border-radius: 7px;
     }
 
+    /* Binabawasan ang gap ng collection slots */
     .collection-bar {
         gap: 2px;
     }
 
+    /* Binabawasan ang padding ng extra scoreboard */
     .extra-box {
         padding: 4px 2px;
     }
 
+    /* Pinapaliit ang labels ng extra scoreboard */
     .extra-box span {
         font-size: 7px;
     }
 
+    /* Pinapaliit ang values ng extra scoreboard */
     .extra-box h2 {
         font-size: 12px;
     }
 
+    /* Binabawasan ang space ng game buttons */
     .game-controls {
         gap: 4px;
     }
 
+    /* Pinapaliit ang buttons para magkasya sa cellphone */
     .game-controls button {
         padding: 7px 9px;
         font-size: 9px;
     }
 
+    /* Ina-adjust ang start screen para sa mobile */
     .start-screen {
         padding: 12px;
         overflow-y: auto;
     }
 
+    /* Ina-adjust ang main title size */
     .start-content h1 {
         font-size: 30px;
     }
 
+    /* Ina-adjust ang second title size */
     .start-content h2 {
         font-size: 25px;
     }
 
+    /* Binabawasan ang space ng instructions */
     .start-instructions {
         padding: 8px;
         margin-bottom: 16px;
     }
 
+    /* Pinapaliit ang instruction text */
     .start-instructions p {
         font-size: 11px;
     }
 
+    /* Ina-adjust ang subtitle */
     .start-subtitle {
         font-size: 10px;
         margin-bottom: 15px;
     }
 
+    /* Pinapaliit ang Start button */
     .start-btn {
         font-size: 15px;
         padding: 13px;
     }
 
+    /* Pinapaliit ang footer text */
     .start-footer {
         font-size: 9px;
         margin-top: 15px;
